@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="base :: html_head"></head>
 <body>
+<div class="container col-md-6 mx-auto">
+    <h1>Système de pointage</h1>
+    <hr>
+    <a th:href="@{/}" class="btn btn-primary btn-sm mb-5 float-right"> Liste des professeurs </a>
+    <form method="post" th:action="@{/professeur/save}" th:object="${professeur}">
+        <input type="hidden" th:field="*{id}" />
+        <fieldset>
+            <legend class="text-muted">Modification Prof</legend>
+            <div class="form-group row">
+                <div class="col">
+                    <label>Nom</label>
+                    <input class="form-control" type="text" placeholder="Nom" name="nom" th:field="*{nom}"/>
+                </div>
+                <div class="col">
+                    <label>Prénom</label>
+                    <input class="form-control" type="text" placeholder="Prénom" name="prenom" th:field="*{prenom}"/>
+                </div>
+
+            </div>
+
+
+            <div class="form-group">
+                <label>Email</label>
+                <input class="form-control" type="text" placeholder="Email" name="email" th:field="*{email}"/>
+            </div>
+            <div class="form-group">
+                <label>Mot de Passe</label>
+                <input class="form-control" type="password" placeholder="Mot de Passe" name="password" th:field="*{password}"/>
+            </div>
+            <div class="form-group">
+                <label>Etat</label>
+                <input class="form-control" type="number" placeholder="Etat" name="etat" th:field="*{etat}"/>
+            </div>
+
+            <div class="form-group">
+                <input class="btn btn-success" type="submit" name="envoyer" value="Modifier"/>
+                <input class="btn btn-danger" type="reset" name="annuler" value="Annuler"/>
+            </div>
+        </fieldset>
+
+    </form>
+</div>
 
 </body>
-</html>
